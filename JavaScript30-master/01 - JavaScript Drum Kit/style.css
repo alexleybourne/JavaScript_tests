@@ -1,7 +1,15 @@
 html {
   font-size: 10px;
-  background: url(http://i.imgur.com/b9r5sEL.jpg) bottom center;
-  background-size: cover;
+  background:linear-gradient(to right, rgba(0, 0, 0, 0.95), rgba(46, 66, 253, 0.432),  rgba(0, 132, 255, 0.75), rgba(21, 133, 207, 0.95), rgba(11, 66, 150, 0.95), rgba(0,0,0,0.95)) no-repeat 0%, url(http://i.imgur.com/b9r5sEL.jpg) 50% no-repeat rgb(0, 0, 0);
+  background-size:400% auto, cover ;
+  animation: bgrad 4s infinite alternate linear;
+}
+
+
+@keyframes bgrad {
+  to {
+    background-position:right, center;
+  }
 }
 
 body,html {
@@ -34,8 +42,8 @@ body,html {
 
 .playing {
   transform: scale(1.1);
-  border-color: #ffc600;
-  box-shadow: 0 0 1rem #ffc600;
+  border-color: #007bff;
+  box-shadow: 0 0 1rem #007bff;
 }
 
 kbd {
@@ -47,5 +55,22 @@ kbd {
   font-size: 1.2rem;
   text-transform: uppercase;
   letter-spacing: .1rem;
-  color: #ffc600;
+  color: #ffffff;
+}
+
+
+@-webkit-keyframes BackgroundGradientAn {
+    0%{lineargradient-position:0% 47%}
+    50%{background-position:100% 54%}
+    100%{background-position:0% 47%}
+}
+@-moz-keyframes BackgroundGradientAn {
+    0%{background-position:0% 47%}
+    50%{background-position:100% 54%}
+    100%{background-position:0% 47%}
+}
+@keyframes BackgroundGradientAn {
+    0%{background-position:0% 47%}
+    50%{background-position:100% 54%}
+    100%{background-position:0% 47%}
 }
