@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
 
     <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
@@ -23,11 +24,12 @@
       <h1 style="font-weight: bold; font-size: 60px;">Javascript 30</h1>
       <div style="line-height: 2px; font-size: 12px;">
       <p>Completed by <b><a href="http://alexleybourne.com/" target="_blank">Alex Leybourne</a></b></p>
-      <p>Created by <b><a href="https://javascript30.com/" target="_blank">Wes Bo</a></b></p>
+      <p>Created by <b><a href="https://javascript30.com/" target="_blank">Wes Bos</a></b></p>
       </div><br>
   </div>
   
   <style>
+
     i {
       font-size: 50px; 
       color: #007bff;
@@ -40,7 +42,35 @@
     h1 {
       color: #007bff;
     }
+
+    * {
+      animation: fadeIn ease 2s;
+    }
+
+    @keyframes fadeIn{
+      0% {
+        -webkit-transform: translateY(50px);
+                transform: translateY(50px);
+        opacity: 0;
+      }
+      100% {
+        -webkit-transform: translateY(0);
+                transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+
+    .card {
+      transition: transform 0.4s;
+      animation-timing-function: linear;
+    }
   
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+
   </style>
 
   
@@ -132,7 +162,7 @@
         <div class="col-md-3">
             <div class="card mb-4 shadow-sm">
               <div class="card-body text-center">
-                  <i class="fas fa-sliders-h"></i>
+                  <i class="fas fa-code"></i>
                   <br><br>
                   <p>07 - Array cardio Day 2</p>
                   <div class="d-flex justify-content-center align-items-center">
@@ -145,9 +175,9 @@
         <div class="col-md-3">
           <div class="card mb-4 shadow-sm">
             <div class="card-body text-center">
-                <i class="fas fa-code"></i>
+                <i class="fas fa-paint-brush"></i>
               <br><br>
-              <p>08 - Fun w/ HTML 5 Canvas</p>
+              <p>08 - Fun with Canvas</p>
               <div class="d-flex justify-content-center align-items-center">
               <a href="JavaScript30-master/08 - Fun with HTML5 Canvas/index-START.html" class="btn btn-lg btn-primary">View</a>
             </div>
