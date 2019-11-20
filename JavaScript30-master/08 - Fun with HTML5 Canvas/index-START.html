@@ -8,34 +8,91 @@
   <link rel="icon" type="image/png" sizes="32x32" href="../../favicon/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="../../favicon/favicon-16x16.png">
 
+  <!-- Bootstrap Prettyness -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
+
+
+
 <canvas id="draw" width="800" height="800"></canvas>
+
+
+<nav class="navbar fixed-bottom navbar-expand-sm navbar-dark bg-primary">
+      <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+              <h3>Fun With Canvas</h3>
+            </li>
+        <li class="nav-item">
+          <button id="clear" class="btn btn-outline-light">Clear</button> 
+        </li>
+      </ul>
+  </nav>
+
+<div class="controls">
+
+</div>
+
+<style>
+
+h3 {
+  color: white;
+}
+
+.btn {
+  margin:  0 10px 0 10px;
+}
+
+</style>
+
+
 
 <script>
   const canvas = document.querySelector('#draw')
   const ctx = canvas.getContext('2d')
 
   canvas.width = window.innerWidth
-  canvas.height = window.innerHeight
+  canvas.height = window.innerHeight - 50
 
   ctx.strokeStyle = '#BADA55'
   ctx.lineJoin = 'round'
-  ctx.linecap = 'round'
+  ctx.lineCap = 'round'
   ctx.lineWidth = '50'
 
   let isDrawing = false
   let lastX = 0
   let lastY = 0
+  let hue = 0
+  let direction = true
+
 
   function draw(e) {
     if (!isDrawing) return // Stops function from running
     console.log(e)
+    ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`
     ctx.beginPath()
     ctx.moveTo(lastX, lastY)
     ctx.lineTo(e.offsetX, e.offsetY)
     ctx.stroke()
-    [lastX, lastY] = [e.offsetX, e.offsetY]
+    lastX = e.offsetX
+    lastY = e.offsetY
+
+    hue ++
+    if (hue >= 360 ) {
+      hue = 0
+    }
+
+    if (ctx.lineWidth >= 100 || ctx.lineWidth <= 1){
+        direction = !direction
+    }
+
+    if(direction){
+      ctx.lineWidth ++
+    } else {
+      ctx.lineWidth --
+    }
+    
+
   }
   canvas.addEventListener('mousedown', (e) => {
     isDrawing = true
@@ -46,6 +103,10 @@
   canvas.addEventListener('mousemove', draw)
   canvas.addEventListener('mouseup', () => isDrawing = false)
   canvas.addEventListener('out', () => isDrawing = false)
+
+  document.getElementById('clear').addEventListener('click', function () {
+    ctx.clearRect(0, 0, canvas.width, canvas.height)
+  }, false)
 
 </script>
 
