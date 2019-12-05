@@ -14,7 +14,7 @@
 
     html {
       font-family: sans-serif;
-      background: #ffc600;
+      background: #007bff;
     }
 
     .inbox {
@@ -99,8 +99,35 @@
       <p>Don't forget to tweet your result!</p>
     </div>
   </div>
-
+ 
 <script>
+  const checkboxes = document.querySelectorAll('.inbox [type="checkbox"]')
+
+let lastChecked
+
+
+
+  function handleCheck(e){
+    //  Check if the shift key is pressed
+    // And check if something is becing checked
+    let inBetween = false
+    if(e.shiftKey && this.checked) {
+    // loop over all the checboxes
+    checkboxes.forEach(checkbox => {
+      if (checkbox === this || checkbox === lastChecked) {
+        inBetween = !inBetween
+      }
+      if (inBetween) {
+        checkbox.checked = true
+      }
+    })
+    }
+ 
+    lastChecked = this
+  }
+
+  checkboxes.forEach(checkbox => checkbox.addEventListener('click', handleCheck))
+
 </script>
 </body>
 </html>
